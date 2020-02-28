@@ -16,15 +16,13 @@ app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0
 def start_page():
     if request.method=='POST':
         fn=request.form["name"]
-        im=request.form['im']
-        rt=request.form['rt']
-        bms=request.form['bms']
+        yr=request.form["year"]
         num=request.form['num']
-        combined.scraper(fn,im,rt,bms,num)
+        text=combined.scraper(fn,yr,num)
         
         
 
-        return render_template("results.html")
+        return render_template("results.html",text=text)
     
     return render_template("index.html")
 
